@@ -1,5 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Swiss Price Checker</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome">Let\'s search for an item:</string>
+    <string name="search_hint">Type here</string>
+    <string name="search_button">GO!</string>
+    
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="mediamarkt_loading">Loading MediaMarkt link</string>
+    <string name="fnac_loading">Loading Fnac link</string>
+    
 
 </resources>

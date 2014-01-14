@@ -1,0 +1,5 @@
+HOW TO:
+
+# Add a new provider:
+    -Create a new class for it in the providers package.
+    - 
