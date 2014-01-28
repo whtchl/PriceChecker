@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.Menu;
@@ -16,7 +17,7 @@ import ch.jalil.swisspricechecker.Const;
 import ch.jalil.swisspricechecker.R;
 import ch.jalil.swisspricechecker.Utils;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
     private static final String TAG = "ch.jalil.swisspricechecker.ui.MainActivity";
 
 	private TextView searchBox;

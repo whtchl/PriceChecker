@@ -1,1 +1,6 @@
 TODO LIST
+
+USE BUTTONS WITH INTENTS:
+
+#Uri webpage = Uri.parse("http://www.android.com");
+#Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);

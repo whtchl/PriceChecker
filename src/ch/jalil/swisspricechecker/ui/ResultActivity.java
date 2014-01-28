@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
@@ -14,7 +15,7 @@ import ch.jalil.swisspricechecker.Const;
 import ch.jalil.swisspricechecker.R;
 import ch.jalil.swisspricechecker.io.providers.Providers;
 
-public class ResultActivity extends Activity {
+public class ResultActivity extends ActionBarActivity {
 
 	private String userInput = null;
 	private AppData appData = null;
@@ -24,6 +25,7 @@ public class ResultActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		//Retrieving extra:
 		
