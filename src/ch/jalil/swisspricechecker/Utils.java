@@ -4,9 +4,6 @@ package ch.jalil.swisspricechecker;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import android.util.Log;
-import android.widget.Toast;
-
 
 /**
  * Small utilities needed here and there.

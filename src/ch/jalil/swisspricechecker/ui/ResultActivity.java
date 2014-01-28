@@ -61,6 +61,15 @@ public class ResultActivity extends Activity {
 			case FNAC:
 				tv = (TextView)findViewById(R.id.fnac_tv);
 				break;
+			case AMAZON:
+				tv = (TextView)findViewById(R.id.amazon_tv);
+				break;
+			case MELECTRONICS:
+				tv = (TextView)findViewById(R.id.melectronics_tv);
+				break;
+			case TOPPREISE:
+				tv = (TextView)findViewById(R.id.toppreise_tv);
+				break;				
 			default:
 				tv = null;
 				break;

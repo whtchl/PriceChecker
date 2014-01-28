@@ -12,6 +12,8 @@
     <string name="title_activity_result">ResultActivity</string>
     <string name="mediamarkt_loading">Loading MediaMarkt link</string>
     <string name="fnac_loading">Loading Fnac link</string>
-    
+    <string name="amazon_loading">Loading Amazon link</string>
+    <string name="melectronics_loading">Loading M-Electronics link</string>
+    <string name="toppreise_loading">Loading Toppreise link</string>
 
 </resources>

@@ -20,5 +20,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fnac_loading" />
+    
+    <TextView
+        android:id="@+id/amazon_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amazon_loading" />
+    
+    <TextView
+        android:id="@+id/melectronics_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/melectronics_loading" />
+    
+    <TextView
+        android:id="@+id/toppreise_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toppreise_loading" />
+    
 
 </LinearLayout>

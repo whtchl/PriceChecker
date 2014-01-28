@@ -29,6 +29,9 @@ public final class Const {
         public static final String INPUT_ERROR = "Bad formated input!";
         public static final String BROWSE_MEDIAMARKT = "Browse MediaMarkt website";
         public static final String BROWSE_FNAC = "Browse Fnac.com website";
+        public static final String BROWSE_AMAZON = "Browse Amazon.fr website";
+        public static final String BROWSE_MELECTRONICS = "Browse M-Electronics website";
+        public static final String BROWSE_TOPPREISE = "Browse TopPreise website";
 
         private Strings() {
         } // Non-instantiable.
@@ -49,6 +52,9 @@ public final class Const {
 
     public static enum PROVIDERS_TYPE {
     	MEDIAMARKT,
-    	FNAC;
+    	FNAC,
+    	AMAZON,
+    	MELECTRONICS,
+    	TOPPREISE;
     }
 }

@@ -17,7 +17,8 @@ public class URLs {
 	public final static String MELECTRONICS_PREFIX = "/c/";
 	public final static String MELECTRONICS_PREFIX2 = "/?q=";
 	
-	public final static String TOPPREISE_SITE = "http://fr.toppreise.ch";
+	public final static String TOPPREISE_SITE_PREFIX = "http://";
+	public final static String TOPPREISE_SITE_SUFFIX = ".toppreise.ch";
 	public final static String TOPPREISE_PREFIX ="/index.php?search=";
 	
 }

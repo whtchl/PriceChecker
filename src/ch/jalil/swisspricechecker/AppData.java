@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import ch.jalil.swisspricechecker.io.providers.Amazon;
 import ch.jalil.swisspricechecker.io.providers.Fnac;
 import ch.jalil.swisspricechecker.io.providers.MediaMarkt;
+import ch.jalil.swisspricechecker.io.providers.Melectronics;
 import ch.jalil.swisspricechecker.io.providers.Providers;
+import ch.jalil.swisspricechecker.io.providers.TopPreise;
 
 /**
  * Singleton object containing various utilities for the app.
@@ -62,6 +65,9 @@ public final class AppData {
     	
     	mProvidersList.add(new MediaMarkt());
     	mProvidersList.add(new Fnac());
+    	mProvidersList.add(new Amazon());
+    	mProvidersList.add(new Melectronics());
+    	mProvidersList.add(new TopPreise());
     }
 
 	
