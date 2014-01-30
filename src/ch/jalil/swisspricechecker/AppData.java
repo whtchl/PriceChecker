@@ -2,11 +2,16 @@
 package ch.jalil.swisspricechecker;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.parser.*;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import ch.jalil.swisspricechecker.io.providers.Amazon;
 import ch.jalil.swisspricechecker.io.providers.Fnac;
 import ch.jalil.swisspricechecker.io.providers.MediaMarkt;
@@ -29,11 +34,11 @@ public final class AppData {
     private List<Providers> mProvidersList;
 
     private Context mContext;
-//    private SharedPreferences mPrefs;
+    private SharedPreferences mPrefs;
     
     private AppData(Context context) {
         mContext = context;
-//        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 //        mPrefs.registerOnSharedPreferenceChangeListener(this);
     	
     	constructProvidersList();
@@ -73,9 +78,78 @@ public final class AppData {
     }
     
     public String getPreferredLanguage() {
-    	SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-    	return sharedPrefs.getString(Const.PrefKeys.LANGUAGE, null);
+    	return mPrefs.getString(Const.PrefKeys.LANGUAGE, null);
     }
 
+    
+    //##### History #####
+    
+    public boolean addToHistory(String entry) {
+        if (entry == null) {
+            return false;
+        }
+        
+        List<String> history = null;
+        
+		try {
+			history = getHistory();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+        
+        history.add(0, entry);
+        
+        truncateHistory(history);
+        
+        return mPrefs.edit().putString(Const.PrefKeys.HISTORY,
+        		JSONArray.toJSONString(history)).commit();
+    }
+
+    @SuppressWarnings("unchecked")
+	public List<String> getHistory() throws ParseException {
+    	List<String> history = null;
+    	String JSONHistory = mPrefs.getString(Const.PrefKeys.HISTORY, null);
+
+    	if (JSONHistory != null) {
+    		JSONParser parser = new JSONParser();
+    		history = (List<String>)parser.parse(JSONHistory);
+    	} else {
+    		history = new LinkedList<String>();
+    	}
+    	return history;
+    }
+    
+    
+    /**
+     * This method checks whether the history has become too long and, if so,
+     * deletes the oldest entries. It should be called in the addToHistory
+     * method so that it is truncated "in place" before it is being
+     * stored in the shared prefs. It can handle a way too large history in case
+     * of bug, but it should usually only remove one entry at a time.
+     */
+    private boolean truncateHistory(List<String> history) {
+
+        if (history == null) {
+            return false;
+        }
+
+        int historySize = history.size();
+
+        if (historySize <= Const.Integers.MAX_HISTORY_SIZE) {
+            return false;
+        }        
+
+        while (historySize > Const.Integers.MAX_HISTORY_SIZE) {
+        	history.remove(historySize -1);
+        	historySize = history.size();
+        	Log.d(TAG, "history has been truncated once");
+        }
+        return true;
+    }
+
+    public boolean clearHistory() {
+        return mPrefs.edit().remove(Const.PrefKeys.HISTORY).commit();
+    }
 	
 }

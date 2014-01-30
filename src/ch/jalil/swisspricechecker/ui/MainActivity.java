@@ -2,9 +2,9 @@ package ch.jalil.swisspricechecker.ui;
 
 import java.io.UnsupportedEncodingException;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputFilter;
 import android.util.Log;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import ch.jalil.swisspricechecker.AppData;
 import ch.jalil.swisspricechecker.Const;
 import ch.jalil.swisspricechecker.R;
 import ch.jalil.swisspricechecker.Utils;
@@ -26,6 +27,8 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		PreferenceManager.setDefaultValues(getApplicationContext(), R.xml.pref_general, false);
+		
 		setContentView(R.layout.activity_main);
 		searchBox = (EditText)findViewById(R.id.search_box);
 		//protect from long input:
@@ -92,6 +95,8 @@ public class MainActivity extends ActionBarActivity {
 	    	 return;
 	     }
 	     
+	     addToHistory(getUserInput());
+	     
 	     Intent intent = new Intent(this, ResultActivity.class)
 	     	.putExtra(Const.IntentKeys.INPUT, URLInput);
 	     
@@ -101,8 +106,12 @@ public class MainActivity extends ActionBarActivity {
 	
 	
 	private String getUserInput() {
-//		Toast.makeText(getApplicationContext(), searchBox.getText().toString(), Toast.LENGTH_SHORT).show();
 		return searchBox.getText().toString();
+	}
+	
+	private boolean addToHistory(String input) {
+		AppData mData = AppData.getInstance(getApplicationContext());
+		return mData.addToHistory(input);
 	}
 	
 }

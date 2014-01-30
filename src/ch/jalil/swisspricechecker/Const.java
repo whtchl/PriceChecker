@@ -16,7 +16,7 @@ public final class Const {
 
     /** Preference keys. */
     public final class PrefKeys {
-    	
+    	public static final String HISTORY = "history";
     	// as defined in pref_general.xml
         public static final String LANGUAGE = "preferred_language";
        
@@ -40,6 +40,7 @@ public final class Const {
     /** Various integer values. */
     public final class Integers {
     	public static final int QUERY_MAX_LENGTH = 100;
+    	public static final int MAX_HISTORY_SIZE = 5;
 
         private Integers() {
         } // Non-instantiable.
