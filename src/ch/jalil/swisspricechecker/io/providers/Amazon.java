@@ -1,13 +1,14 @@
 package ch.jalil.swisspricechecker.io.providers;
 
+import android.content.Context;
 import ch.jalil.swisspricechecker.Const;
 import ch.jalil.swisspricechecker.Const.PROVIDERS_TYPE;
 import ch.jalil.swisspricechecker.io.URLs;
 
 public class Amazon extends Providers{
 	
-	public Amazon() {
-		super();
+	public Amazon (Context c) {
+		super(c);
 		type = PROVIDERS_TYPE.AMAZON;
 	}
 

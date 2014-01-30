@@ -17,9 +17,9 @@ public final class Const {
     /** Preference keys. */
     public final class PrefKeys {
     	
-    	/* example:
-        public static final String EMAIL = "email";
-       */
+    	// as defined in pref_general.xml
+        public static final String LANGUAGE = "preferred_language";
+       
         private PrefKeys() {
         } // Non-instantiable.
     }

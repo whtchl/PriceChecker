@@ -59,9 +59,6 @@ public class ResultActivity extends ActionBarActivity {
 	        case R.id.action_help:
 	            openHelp();
 	            return true;
-	        case R.id.action_settings:
-	            openSettings();
-	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

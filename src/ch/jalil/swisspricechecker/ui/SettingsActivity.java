@@ -40,7 +40,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * as a master/detail two-pane view on tablets. When true, a single pane is
 	 * shown on tablets.
 	 */
-	private static final boolean ALWAYS_SIMPLE_PREFS = false;
+//	private static final boolean ALWAYS_SIMPLE_PREFS = false;
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
@@ -80,7 +80,7 @@ public class SettingsActivity extends PreferenceActivity {
 		// Bind the summaries of EditText/List/Dialog/Ringtone preferences to
 		// their values. When their values change, their summaries are updated
 		// to reflect the new value, per the Android Design guidelines.
-		bindPreferenceSummaryToValue(findPreference("example_text"));
+		bindPreferenceSummaryToValue(findPreference("preferred_language"));
 //		bindPreferenceSummaryToValue(findPreference("example_list"));
 //		bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 //		bindPreferenceSummaryToValue(findPreference("sync_frequency"));

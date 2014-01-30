@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import ch.jalil.swisspricechecker.io.providers.Amazon;
 import ch.jalil.swisspricechecker.io.providers.Fnac;
 import ch.jalil.swisspricechecker.io.providers.MediaMarkt;
@@ -26,11 +28,11 @@ public final class AppData {
     
     private List<Providers> mProvidersList;
 
-//    private Context mContext;
+    private Context mContext;
 //    private SharedPreferences mPrefs;
     
     private AppData(Context context) {
-//        mContext = context;
+        mContext = context;
 //        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 //        mPrefs.registerOnSharedPreferenceChangeListener(this);
     	
@@ -63,11 +65,16 @@ public final class AppData {
     private void constructProvidersList() {
     	mProvidersList = new ArrayList<Providers>();
     	
-    	mProvidersList.add(new MediaMarkt());
-    	mProvidersList.add(new Fnac());
-    	mProvidersList.add(new Amazon());
-    	mProvidersList.add(new Melectronics());
-    	mProvidersList.add(new TopPreise());
+    	mProvidersList.add(new MediaMarkt(mContext));
+    	mProvidersList.add(new Fnac(mContext));
+    	mProvidersList.add(new Amazon(mContext));
+    	mProvidersList.add(new Melectronics(mContext));
+    	mProvidersList.add(new TopPreise(mContext));
+    }
+    
+    public String getPreferredLanguage() {
+    	SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+    	return sharedPrefs.getString(Const.PrefKeys.LANGUAGE, null);
     }
 
 	
