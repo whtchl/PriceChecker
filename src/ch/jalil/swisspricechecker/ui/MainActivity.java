@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,13 +34,50 @@ public class MainActivity extends ActionBarActivity {
 		
 	}
 
+	//############## Menu and ActionBar ##############
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_help:
+	            openHelp();
+	            return true;
+	        case R.id.action_settings:
+	            openSettings();
+	            return true;
+	        case R.id.action_history:
+	        	openHistory();
+	        	return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void openHelp() {
+		Intent helpIntent = new Intent(this, HelpActivity.class);
+		startActivity(helpIntent);
+	}
+	
+	public void openSettings() {
+		Intent settingsIntent = new Intent(this, SettingsActivity.class);
+		startActivity(settingsIntent);
+	}
+	
+	public void openHistory() {
+		Intent historyIntent = new Intent(this, HistoryActivity.class);
+		startActivity(historyIntent);
+	}
 
+	
+	//############## Search helpers ##############
+	
 	public void launchSearch(View view) {
 	     String URLInput = null;
 	     try {

@@ -2,12 +2,13 @@ package ch.jalil.swisspricechecker.ui;
 
 import java.util.List;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 import ch.jalil.swisspricechecker.AppData;
@@ -42,12 +43,41 @@ public class ResultActivity extends ActionBarActivity {
 		
 	}
 
+	
+	//############## Menu and ActionBar ##############
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.result, menu);
 		return true;
 	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_help:
+	            openHelp();
+	            return true;
+	        case R.id.action_settings:
+	            openSettings();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void openHelp() {
+		Intent helpIntent = new Intent(this, HelpActivity.class);
+		startActivity(helpIntent);
+	}
+	
+	public void openSettings() {
+		Intent settingsIntent = new Intent(this, SettingsActivity.class);
+		startActivity(settingsIntent);
+	}
+	
+	//############## Display helpers ##############
 
 	private void displayResults() {
 		//TODO make something dynamic here
